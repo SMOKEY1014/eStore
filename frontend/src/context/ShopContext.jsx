@@ -37,15 +37,12 @@ const ShopContextProvider = (props) => {
             cartData[itemId][size] = 1;
         }
         setCartItems(cartData);
-        console.log(token)
 
         if (token) {
             try {
-                const responce = await axios.post(backend_Url + '/api/cart/add', { itemId, size }, { headers: { token } })
-                console.log(responce)
-                console.log('from responce ^^')
+                await axios.post(backend_Url + '/api/cart/add', { itemId, size }, { headers: { token } })
+                toast.success('Item added to Cart!')
             } catch (error) {
-                console.log('Caught error from ShopContext like 46, adding a commit sowe can check this error later')
                 console.log(error)
                 toast.error(error.message)
             }
@@ -72,6 +69,15 @@ const ShopContextProvider = (props) => {
         cartData[itemId][size] = quantity;
 
         setCartItems(cartData);
+
+        if (token) {
+            try {
+                await axios.post(backend_Url + '/api/cart/update', { itemId, size, quantity }, { headers: { token } });
+            } catch (error) {
+                console.log(error)
+                toast.error(error.message)
+            }
+        }
 
     }
 
@@ -107,6 +113,18 @@ const ShopContextProvider = (props) => {
         }
     }
 
+    const getUserCart = async (token) => {
+        try {
+            const responce = await axios.post(backend_Url + '/api/cart/get',{}, { headers: { token } });
+            if (responce.data.success) {
+                setCartItems(responce.data.cartData)
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(error.message)
+        }
+    }
+
     useEffect(() => {
         getProductsData();
     }, [])
@@ -114,6 +132,7 @@ const ShopContextProvider = (props) => {
     useEffect(() => {
         if (!token && localStorage.getItem('token')) {
             setToken(localStorage.getItem('token'))
+            getUserCart(localStorage.getItem('token'));
         }
     },[])
 

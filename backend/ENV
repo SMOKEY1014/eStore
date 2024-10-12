@@ -1,0 +1,7 @@
+MONGODB_URL="mongodb+srv://smokeydhlamini:1234567890@cluster0.xh7wz.mongodb.net/"
+CLOUDINARY_API_KEY="367112879245319"
+CLOUDINARY_API_SECRET="7kR9OvWcbmhKAxKkbJthJbU5Rp8"
+CLOUDINARY_NAME="dcj06jiwi"
+JWT_SECRET="ntuthuko"
+ADMIN_EMAIL="admin@forever.com"
+ADMIN_PASSWORD="qwerty123"

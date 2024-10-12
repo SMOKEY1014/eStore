@@ -37,8 +37,6 @@ const ShopContextProvider = (props) => {
             cartData[itemId][size] = 1;
         }
         setCartItems(cartData);
-        console.log(cartData);
-        console.log(cartItems);
         console.log(token)
 
         if (token) {
@@ -47,7 +45,7 @@ const ShopContextProvider = (props) => {
                 console.log(responce)
                 console.log('from responce ^^')
             } catch (error) {
-                console.log('Caught error from ShopContext like 46')
+                console.log('Caught error from ShopContext like 46, adding a commit sowe can check this error later')
                 console.log(error)
                 toast.error(error.message)
             }

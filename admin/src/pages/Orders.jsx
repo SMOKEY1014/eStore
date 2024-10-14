@@ -81,7 +81,7 @@ const Orders = ({token}) => {
                       <option value="Packing">Packing</option>
                       <option value="Shipped">Shipped</option>
                       <option value="Out for Delivery">Out for Delivery</option>
-                      <option value="Delivered">Delivered</option>
+                      <option value="Delivered">Delivered </option>
                   </select>
             </div>
           ))}

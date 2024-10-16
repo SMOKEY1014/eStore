@@ -16,6 +16,7 @@ dist-ssr
 ENV
 
 node_modules
+assets
 
 *.env
 

@@ -71,7 +71,6 @@ const PlaceOrder = () => {
           // console.log('Entering stripe gateway')
           const responceStripe = await axios.post(backend_Url + '/api/order/stripe', orderData, { headers: { token } });
           if (responceStripe.data.success) {
-            console.log(responceStripe)
             const { session_url } = responceStripe.data
             window.location.replace(session_url)
           } else {

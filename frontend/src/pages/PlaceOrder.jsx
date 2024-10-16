@@ -9,7 +9,8 @@ import { toast } from 'react-toastify'
 const PlaceOrder = () => {
   
   const [method, setMethod] = useState('cod');
-  const { navigate, backend_Url,token, cartItems, setCartItems, getCartAmount, delivery_fee, products } = useContext(ShopContext);
+  const { navigate, backend_Url, token, cartItems, setCartItems, getCartAmount, delivery_fee, products } = useContext(ShopContext);
+  const [paymentUrl, setPaymentUrl] = useState('')
   const [formData, setFormData] = useState({
     firstName:"",
     lastName:"",
@@ -78,6 +79,23 @@ const PlaceOrder = () => {
             toast.error(responceStripe.data.message)
           }
           break;
+        
+        case 'Payfast':
+          console.log("Payfast...");
+          toast.success("Payfast initiate...");
+
+          const responcePayfast = await axios.post(backend_Url + '/api/order/payfast', orderData, { headers: { token } });
+          console.log(responcePayfast)
+
+          if (responcePayfast.data.success) {
+            setPaymentUrl(responcePayfast.data.paymentUrl);
+            window.location.href = responcePayfast.data.paymentUrl
+          } else {
+            toast.error(responcePayfast.data.message)
+            console.log(responcePayfast);
+          }
+
+          break;
       
         default:
           break;
@@ -126,8 +144,12 @@ const PlaceOrder = () => {
               <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'stripe' ? 'bg-green-600' : ''}`}></p>
               <img src={assets.stripe_logo} alt="" className="h-5 mx-4" />
             </div>
-            <div onClick={() => setMethod('razorpay')} className="flex items-center lg:min-w-40 gap-3 border p-2 px-3 cursor-pointer">
+            {/* <div onClick={() => setMethod('razorpay')} className="flex items-center lg:min-w-40 gap-3 border p-2 px-3 cursor-pointer">
               <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'razorpay' ? 'bg-green-600' : ''}`}></p>
+              <img src={assets.razorpay_logo} alt="" className="h-5 mx-4" />
+            </div> */}
+            <div onClick={() => setMethod('Payfast')} className="flex items-center lg:min-w-40 gap-3 border p-2 px-3 cursor-pointer">
+              <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'Payfast' ? 'bg-green-600' : ''}`}></p>
               <img src={assets.razorpay_logo} alt="" className="h-5 mx-4" />
             </div>
             <div onClick={() => setMethod('cod')} className="flex items-center lg:min-w-40 gap-3 border p-2 px-3 cursor-pointer">

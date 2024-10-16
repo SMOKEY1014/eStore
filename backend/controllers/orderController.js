@@ -1,6 +1,7 @@
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import Stripe from "stripe";
+import crypto from "crypto";
 
 //global variables
 const currency = "zar";
@@ -122,6 +123,52 @@ const allOrders = async (req, res) => {
   }
 };
 
+// Place order using Payfast
+const placeOrderPayfast = async (req, res) => {
+  const { userId, items, amount, address } = req.body;
+
+  try {
+    const data = {
+      // merchant_id: 16456367,
+      merchant_id: process.env.PAYFAST_MERCHANT_ID,
+      merchant_key: process.env.PAYFAST_MERCHANT_KEY,
+      // return_url: "https://github.com/SMOKEY1014/eStore",
+      // cancel_url: "https://github.com/SMOKEY1014/eStore",
+      // notify_url: "https://github.com/SMOKEY1014/eStore",
+      amount: amount, // PayFast accepts amounts in cents
+      item_name: "Order payment",
+      custom_str1: userId,
+    };
+
+    const pfParamString = Object.keys(data)
+      .map(
+        (key) => `${key}=${encodeURIComponent(data[key]).replace(/%20/g, "+")}`
+      )
+      .join("&");
+
+    // Generate signature (if you want to handle it manually, else rely on PayFast sandbox for testing)
+    const signature = crypto
+      .createHash("md5")
+      .update(pfParamString + "&passphrase=" + process.env.PAYFAST_PASSPHRASE)
+      .digest("hex");
+
+    data.signature = signature;
+
+    // Create a URL with all the parameters
+    const paymentUrl = `https://payfast.co.za/eng/process?${new URLSearchParams(
+      data
+    ).toString()}`;
+
+    // Send the payment URL back to the frontend
+    res.json({ success: true, paymentUrl });
+  } catch (error) {
+    console.error("Error initiating payment:", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Payment initiation failed" });
+  }
+};
+
 // All Orders data for User for Frontend
 const userOrders = async (req, res) => {
   try {
@@ -155,4 +202,5 @@ export {
   userOrders,
   updateStatus,
   verifyStripe,
+  placeOrderPayfast,
 };

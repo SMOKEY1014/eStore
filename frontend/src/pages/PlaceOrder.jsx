@@ -82,17 +82,20 @@ const PlaceOrder = () => {
         
         case 'Payfast':
           console.log("Payfast...");
-          toast.success("Payfast initiate...");
+          toast.success("Initiating Payfast payment... Please wait...");
 
-          const responcePayfast = await axios.post(backend_Url + '/api/order/payfast', orderData, { headers: { token } });
-          console.log(responcePayfast)
+          try {
+            const responsePayfast = await axios.post(`${backend_Url}/api/order/payfast`, orderData, { headers: { token } });
 
-          if (responcePayfast.data.success) {
-            setPaymentUrl(responcePayfast.data.paymentUrl);
-            window.location.href = responcePayfast.data.paymentUrl
-          } else {
-            toast.error(responcePayfast.data.message)
-            console.log(responcePayfast);
+            if (responsePayfast.data.success) {
+              setPaymentUrl(responsePayfast.data.paymentUrl);
+              window.location.href = responsePayfast.data.paymentUrl;
+            } else {
+              toast.error(responsePayfast.data.message);
+            }
+          } catch (error) {
+            console.error("Error initiating Payfast:", error);
+            toast.error("Payfast initiation failed");
           }
 
           break;
@@ -150,7 +153,7 @@ const PlaceOrder = () => {
             </div> */}
             <div onClick={() => setMethod('Payfast')} className="flex items-center lg:min-w-40 gap-3 border p-2 px-3 cursor-pointer">
               <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'Payfast' ? 'bg-green-600' : ''}`}></p>
-              <img src={assets.razorpay_logo} alt="" className="h-5 mx-4" />
+              <img src={assets.payfast} alt="" className="h-5 mx-4" />
             </div>
             <div onClick={() => setMethod('cod')} className="flex items-center lg:min-w-40 gap-3 border p-2 px-3 cursor-pointer">
               <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'cod' ? 'bg-green-600' : ''}`}></p>

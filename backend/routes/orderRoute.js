@@ -8,7 +8,12 @@ import {
   userOrders,
   updateStatus,
   verifyStripe,
+  // verifyPayfast,
   placeOrderPayfast,
+  payfastIPN,
+  // paymentFailed,
+  // paymentSuccess,
+  verify,
 } from "../controllers/orderController.js";
 import adminAuth from "../middleware/adminAuth.js";
 import authUser from "../middleware/auth.js";
@@ -29,6 +34,12 @@ orderRouter.post("/payfast", authUser, placeOrderPayfast);
 orderRouter.post("/userorders", authUser, userOrders);
 
 // Verify payment
-orderRouter.post("/verifyStripe", authUser, verifyStripe);
+orderRouter.post("/verify", authUser, verifyStripe);
+// orderRouter.post("/verifyStripe", authUser, verifyStripe);
+// orderRouter.post("/verifyPayfast", authUser, verifyPayfast);
+// orderRouter.post("/paymentfailed", paymentFailed);
+// orderRouter.post("/paymentsuccess", paymentSuccess);
+// orderRouter.post("/verify", authUser, verifyStripe);
+orderRouter.post("/payfast/notify", authUser, payfastIPN);
 
 export default orderRouter;

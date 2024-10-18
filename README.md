@@ -10,7 +10,7 @@
 - **Responsive Design**: Built with mobile and desktop views in mind.
 
 ## Technologies Used
-### Frontend:
+### Frontend: 
 - **React**: A JavaScript library for building the user interface.
 - **CSS**: Styling for the application.
 
@@ -36,3 +36,17 @@ Ensure you have the following installed on your local machine:
 ```bash
 git clone https://github.com/SMOKEY1014/eStore.git
 cd eStore
+
+### Project Structure
+```bash
+eStore/
+├── backend/               # Backend source code
+│   ├── models/            # MongoDB models
+│   ├── routes/            # API routes
+│   ├── controllers/       # API controllers
+│   └── server.js          # Express server setup
+├── frontend/              # Frontend source code
+│   ├── src/
+│   ├── public/
+│   └── package.json
+└── README.md

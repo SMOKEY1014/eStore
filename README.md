@@ -22,7 +22,7 @@
 - **Payfast API**: South African payment gateway for handling payments.
 
 ### Deployment:
-- Deployed on **Heroku** (or your chosen platform).
+- Deployed on **Vercel** (or your chosen platform).
 
 ## Installation and Setup
 To get a copy of the project up and running locally, follow these simple steps:

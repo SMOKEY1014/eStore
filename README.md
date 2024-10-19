@@ -12,7 +12,7 @@
 ## Technologies Used
 ### Frontend: 
 - **React**: A JavaScript library for building the user interface.
-- **CSS**: Styling for the application.
+- **TailwindCSS**: Styling for the application.
 
 ### Backend:
 - **Node.js**: JavaScript runtime environment.

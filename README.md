@@ -44,9 +44,18 @@ eStore/
 │   ├── models/            # MongoDB models
 │   ├── routes/            # API routes
 │   ├── controllers/       # API controllers
+│   ├── configs/           # configs
+│   ├── middleware/        # middleware
+│   ├── package.json       # package file
 │   └── server.js          # Express server setup
-├── frontend/              # Frontend source code
+├── frontend/              # Frontend/custormer side source code
 │   ├── src/
 │   ├── public/
+│   ├── index.html         
+│   └── package.json
+├── admin/                 # admin source code
+│   ├── src/
+│   ├── public/
+│   ├── index.html
 │   └── package.json
 └── README.md

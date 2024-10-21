@@ -36,6 +36,7 @@ Ensure you have the following installed on your local machine:
 ```bash
 git clone https://github.com/SMOKEY1014/eStore.git
 cd eStore
+```
 
 ### Project Structure
 ```bash

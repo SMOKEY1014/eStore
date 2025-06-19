@@ -2,6 +2,16 @@
 
 **eStore** is a full-stack e-commerce web application built using the MERN stack (MongoDB, ExpressJS, ReactJS, NodeJS). The platform allows users to browse, add products to their cart, and securely process payments via Stripe and Payfast.
 
+> 🔗 **Live Preview**: [https://e-store-frontend-khaki.vercel.app/](https://e-store-frontend-khaki.vercel.app/)
+
+---
+
+## 📸 Preview
+
+![Forever E-Store Screenshot](https://i.postimg.cc/76Z9WChf/unnamed-4.png)]
+
+---
+
 ## Features
 - **Product Management**: Users can browse and filter products.
 - **Cart Functionality**: Users can add products to their cart and view a summary before checkout.

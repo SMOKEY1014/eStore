@@ -77,3 +77,12 @@ eStore/
 │   ├── index.html
 │   └── package.json
 └── README.md
+```
+
+## 📄 License
+This project is open-source and free to use for educational and portfolio purposes.
+
+## 🙌 Acknowledgements
+- Inspired by the UI of Airbnb
+
+### Built with ❤️ by SMOKEY1014

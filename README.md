@@ -2,8 +2,8 @@
 
 **Forever eStore** is a full-stack e-commerce web application built using the MERN stack (MongoDB, ExpressJS, ReactJS, NodeJS). The platform allows users to browse, add products to their cart, and securely process payments via Stripe and Payfast.
 
-> 🔗 **Custormer Live Preview**: [https://e-store-frontend-khaki.vercel.app/](https://e-store-frontend-khaki.vercel.app/)
-> 🔗 **Admin Live Preview**: [https://e-store-admin-one.vercel.app/](https://e-store-admin-one.vercel.app/add)
+- 🔗 **Custormer Live Preview**: [https://e-store-frontend-khaki.vercel.app/](https://e-store-frontend-khaki.vercel.app/)
+- 🔗 **Admin Live Preview**: [https://e-store-admin-one.vercel.app/](https://e-store-admin-one.vercel.app/add)
 
 
 ---

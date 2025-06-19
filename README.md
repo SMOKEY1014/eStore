@@ -10,13 +10,13 @@
 
 ## 📸 Custormer Preview
 
-![Forever Store Custormer](https://i.postimg.cc/76Z9WChf/unnamed-4.png)]
+![Forever Store Custormer](https://i.postimg.cc/76Z9WChf/unnamed-4.png)
 
 ---
 
 ## 📸 Admin Preview
 
-![Forever Store Admin](https://i.postimg.cc/MGLkt8K2/unnamed-5.png)]
+![Forever Store Admin](https://i.postimg.cc/MGLkt8K2/unnamed-5.png)
 ---
 
 ## Features
